@@ -6,8 +6,5 @@ const app = new PIXI.Application();
 
 document.body.appendChild(app.view);
 
-// TODO: Remove console.logs
-console.log(state.level);
 game.nextLevel();
-console.log(state.level);
 
