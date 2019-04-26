@@ -6,6 +6,7 @@ import SpeechPane from './views/SpeechPane';
 // Initialise Pixi.js
 const app = new PIXI.Application();
 document.body.appendChild(app.view);
+app.renderer.backgroundColor = 0x303030;
 
 // Set up nodes on screen
 const speechPane = new SpeechPane();
