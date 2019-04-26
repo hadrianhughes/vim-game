@@ -3,11 +3,9 @@ import View from './View';
 
 export default function SpeechPane () {
 	const self = this;
-
 	View.call(self);
 
 	const PERIOD = 50;
-
 	self.fullText = '';
 	let lastChange = Date.now();
 	let textLength = 0;
