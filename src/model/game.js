@@ -9,6 +9,7 @@ export function nextLevel () {
 	const levelData = levels[newLevel - 1];
 	if (levelData) {
 		setStages(levelData.stages);
+		setCurrentStage(0);
 	}
 }
 
