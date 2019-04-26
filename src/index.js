@@ -1,6 +1,6 @@
 import * as PIXI from 'pixi.js';
 import * as game from './model/game';
-import { subscribe } from './model/state';
+import { subscribe, state } from './model/state';
 import SpeechPane from './views/SpeechPane';
 
 // Initialise Pixi.js
@@ -11,11 +11,14 @@ document.body.appendChild(app.view);
 const speechPane = new SpeechPane();
 speechPane.textNode.x = 20;
 speechPane.textNode.y = app.renderer.height - (speechPane.textNode.height * 2);
-speechPane.reset('Lorem ipsum');
 app.stage.addChild(speechPane.container);
 
 // Update nodes on every tick
 app.ticker.add(speechPane.update);
+
+subscribe('currentStage', () => {
+	speechPane.reset(state.currentLine);
+});
 
 game.nextLevel();
 
