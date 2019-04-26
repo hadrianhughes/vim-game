@@ -1,6 +1,6 @@
-import { Modes } from './common';
+import { Modes } from '../common';
 
-export const state = {
+export const initialState = {
 	level: 0,
 	mode: Modes.normal,
 	input: '',
@@ -9,6 +9,12 @@ export const state = {
 	content: '',
 	cursorPosition: 0,
 };
+
+export let state = initialState;
+
+export function resetState () {
+	state = initialState;
+}
 
 const createSetter = (property, type) => value => {
 	if (typeof type === 'string') {
