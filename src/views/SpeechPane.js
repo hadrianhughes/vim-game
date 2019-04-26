@@ -15,8 +15,8 @@ export default function SpeechPane () {
 	const getText = () => self.fullText.substr(0, textLength);
 
 	self.textNode = new PIXI.Text(getText(), {
-		fontFamily: 'Courier',
-		fontSize: 16,
+		fontFamily: 'Unifont',
+		fontSize: 18,
 		fill: 0xFFFFFF,
 		wordWrap: true,
 		wordWrapWidth: 200,
