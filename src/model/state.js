@@ -5,12 +5,12 @@ export const initialState = {
 	mode: Modes.normal,
 	input: '',
 	stages: [],
-	currentStage: 0,
+	currentLineIndex: 0,
 	content: '',
 	cursorPosition: 0,
 	get currentLine () {
-		if (this.stages[this.currentStage] && this.stages[this.currentStage].line) {
-			return this.stages[this.currentStage].line;
+		if (this.stages[this.currentLineIndex] && this.stages[this.currentLineIndex].line) {
+			return this.stages[this.currentLineIndex].line;
 		}
 
 		return undefined;
@@ -65,7 +65,7 @@ export const setLevel = createSetter('level', 'number');
 export const setMode = createSetter('mode', Modes);
 export const setInput = createSetter('input', 'string');
 export const setStages = createSetter('stages', 'array');
-export const setCurrentStage = createSetter('currentStage', 'number');
+export const setCurrentStage = createSetter('currentLineIndex', 'number');
 export const setContent = createSetter('content', 'string');
 export const cursorPosition = createSetter('cursorPosition', 'number');
 

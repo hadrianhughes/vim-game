@@ -16,7 +16,7 @@ app.stage.addChild(speechPane.container);
 // Update nodes on every tick
 app.ticker.add(speechPane.update);
 
-subscribe('currentStage', () => {
+subscribe('currentLineIndex', () => {
 	speechPane.reset(state.currentLine);
 });
 
