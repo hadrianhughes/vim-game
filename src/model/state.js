@@ -8,13 +8,22 @@ export const initialState = {
 	currentStage: 0,
 	content: '',
 	cursorPosition: 0,
+	get currentLine () {
+		if (this.stages[this.currentStage] && this.stages[this.currentStage].line) {
+			return this.stages[this.currentStage].line;
+		}
+
+		return undefined;
+	},
 };
+
+const subscribers = {};
 
 export let state = initialState;
 
 export function resetState () {
 	state = initialState;
-}
+};
 
 const createSetter = (property, type) => value => {
 	let successful = false;
@@ -36,8 +45,21 @@ const createSetter = (property, type) => value => {
 
 	if (successful) {
 		state[property] = value;
+		if (subscribers[property]) {
+			subscribers[property].forEach(fn => fn(state[property]));
+		}
 	}
 };
+
+export function subscribe (property, fn) {
+	if (typeof fn === 'function' && typeof property === 'string') {
+		if (subscribers[property]) {
+			subscribers[property].push(fn);
+		} else {
+			subscribers[property] = [fn];
+		}
+	}
+}
 
 export const setLevel = createSetter('level', 'number');
 export const setMode = createSetter('mode', Modes);

@@ -1,4 +1,4 @@
-import { resetState, state, setLevel, setStages } from './state';
+import { subscribe, resetState, state, setLevel, setStages, setCurrentStage } from './state';
 import levels from './data/levels';
 
 export function nextLevel () {
